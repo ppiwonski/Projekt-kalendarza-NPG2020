@@ -6,10 +6,10 @@ def AddNewEvent() -> Events:
         new_event_name = str(input("Wpisz nazwę nowego wydarzenia:"))
         new_event_place = str(input("Wpisz miejsce, w którym odbędzię się wydarzenie: "))
         event_year = int(input("Wpisz rok, w którym odbędzie się wydarzenie:"))
-        event_mouth = int(input("Wpisz numer miesiąca, w którym odbędzie się wydarzenie:"))
+        event_month = int(input("Wpisz numer miesiąca, w którym odbędzie się wydarzenie:"))
         event_day = int(input("Wpisz dzień miesiąca w którym odbędzie się wydarzenie:"))
-        event.append(Events(new_event_name,new_event_place,datetime.date(event_year,event_mouth,event_day)))
-        return Events(new_event_name,new_event_place,datetime.date(event_year,event_mouth,event_day))
+        event.append(Events(new_event_name,new_event_place,datetime.date(event_year,event_month,event_day)))
+        return Events(new_event_name,new_event_place,datetime.date(event_year,event_month,event_day))
     except ValueError:
         print("\n"
               "UWAGA!!!\n"
