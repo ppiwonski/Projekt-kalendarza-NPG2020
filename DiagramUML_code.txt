@@ -1,0 +1,12 @@
+@startuml
+
+class Events {
+ + name_event
+ + place_event
+ + date_event
+ + DeleteEvent()
+ + EditEvent()
+ + CountdownDays()
+}
+
+@enduml
