@@ -23,7 +23,8 @@ while True:
         EditEvent()
         continue
     elif x == 4:
-        CountdownDays()
+        for e in Class.event:
+            print(e.CountdownDays())
         continue
     elif x == 5:
         break
