@@ -4,7 +4,6 @@ class Events {
  + name_event
  + place_event
  + date_event
- + AddNewEvent()
  + DeleteEvent()
  + EditEvent()
  + CountdownDays()
