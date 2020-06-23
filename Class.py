@@ -15,6 +15,11 @@ class Events:
         else:
             return f'Wydarzenie odbywa się dzisiaj.'
 
+    def CountDays(self):
+        today2=(datetime.date.max)
+        difference2 = (today2-self.date_event).dys
+        return int(math.fabs(difference2))
+
 #lista służąca to przechowywania elementów stworzonych obiektów klasy
 event = []
 
