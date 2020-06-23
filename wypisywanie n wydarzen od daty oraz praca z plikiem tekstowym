@@ -1,0 +1,187 @@
+#działąjąca, robocza wersja wymienionych funkcjonalności
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import time
+import datetime, math
+import os
+
+class Events:
+    def __init__(self, name_event, place_event, date_event):
+        self.name_event = name_event
+        self.place_event = place_event
+        self.date_event = date_event
+
+    def CountdownDays(self):
+        today = datetime.date.today()
+        difference = (today-self.date_event).days
+        if difference > 0:
+            return f'Wydarzenie odbyło się {int(difference)} dni temu.'
+        elif difference < 0:
+            return f'Wydarzenie odbędzie się za {int(math.fabs(difference))} dni.'
+        else:
+            return f'Wydarzenie odbywa się dzisiaj.'
+
+    def CountDays(self):
+        today2 = (datetime.date.max)
+        difference2 = (today2 - self.date_event).days
+        return int(math.fabs(difference2))
+
+def AddNewEvent() -> Events:
+    try:
+        new_event_name = str(input("Wpisz nazwę nowego wydarzenia:"))
+        new_event_place = str(input("Wpisz miejsce, w którym odbędzię się wydarzenie: "))
+        event_year = int(input("Wpisz rok, w którym odbędzie się wydarzenie:"))
+        event_month = int(input("Wpisz numer miesiąca, w którym odbędzie się wydarzenie:"))
+        event_day = int(input("Wpisz dzień miesiąca w którym odbędzie się wydarzenie:"))
+        event.append(Events(new_event_name,new_event_place,datetime.date(event_year,event_month,event_day)))
+        return Events(new_event_name,new_event_place,datetime.date(event_year,event_month,event_day))
+    except ValueError:
+        print("\n"
+              "UWAGA!!!\n"
+              "Nie poprawnie wprowadzone dane.\n"
+              "Wprowadź dzień miesiąca z zakreu 1-31, a numer miesiąca z zakresu 1-12.\n")
+
+event = []
+
+def ReadTxt():
+    d = open("CalendarData.txt", "r")
+    if d.closed:
+        print("\nNie znaleziono żadnych zapisanych wydarzeń w kalendarzu\n")
+    line_list=d.readlines()
+    d.close()
+    try:
+        lenght=len(line_list)
+        if lenght<3:
+            print("\nNie znaleziono żadnych zapisanych wydarzeń w kalendarzu\n")
+        for x in range(0, lenght):
+            line_list[x]=line_list[x][:-1]
+        for i in range(0, lenght, 3):
+            name=str(line_list[i])
+            date = str(line_list[i+1])
+            place = str(line_list[i+2])
+            year=int(date[:4])
+            month = int(date[5:7])
+            day = int(date[8:10])
+            event.append(Events(name, place, datetime.date(year,month,day)))
+    except ValueError:
+        print("\nUwaga:\n"
+              "Plik tekstowy modyfikowany recznie lub uszkodzony!\n"
+              "\n")
+        WriteTxt()
+
+def WriteTxt():
+    a = open("CalendarData.txt", "w")
+    for el in event:
+        s=el.name_event
+        a.write(str(s))
+        a.write("\n")
+        s = el.date_event
+        a.write(str(s))
+        a.write("\n")
+        s = el.place_event
+        a.write(str(s))
+        a.write("\n")
+    a.close()
+
+
+def PressAnyKey():
+    x=input('\nAby kontynuować, naciśnij "Enter"...')
+    print("Proszę czekać...")
+
+def ClearScreen():
+    os.system('cls')
+
+def PrintNFromDate():
+    numberofevents = []
+    def Date_from() -> list:
+        new_event_name = str("Any_Date")
+        new_event_place = str("Any_Place")
+        try:
+            event_year = int(input("Wpisz rok twojej daty:"))
+            event_month = int(input("Wpisz numer miesiąca twojej daty:"))
+            event_day = int(input("Wpisz dzień miesiąca twojej daty"))
+        except ValueError:
+            print("Wprowadzono niepoprawny numer miesiaca/roku/dnia. Wracam do menu aplikacji")
+            time.sleep(1)
+            numberofevents.append(-1)
+            ClearScreen()
+            return None
+        print(" ")
+        time.sleep(1)
+        os.system('cls')
+        event.append(Events(new_event_name, new_event_place, datetime.date(event_year, event_month, event_day)))
+        k=event[-1]
+        print(f'Twoja data to {event[-1].date_event} .')
+        templist=[]
+        x=0
+        for el in event:
+            if int(el.CountDays()) < int(k.CountDays()):
+                templist.append(el)
+                x+=1
+        if x>0:
+            print(f'Liczba znalezionych wydarzenia od tej daty:   {x}')
+        elif x==0:
+            print("Nie znaleziono żadnych wydarzeń po podanej dacie")
+        numberofevents.append(int(x))
+        return templist
+    ListToSort=[]
+    ListToSort=Date_from()
+    def bubblesort1(x):
+        if x is None:
+            return None
+        m = len(x)
+        templist1 = []
+        templist1.extend(x)
+        for k in range(m - 1):
+            for s in range(m - 1):
+                f = (s + 1)
+                gm = templist1[s + 1].CountDays()
+                float(gm)
+                y1 = templist1[s].CountDays()
+                float(y1)
+                if gm > y1:
+                    bufor = templist1[s]
+                    templist1[s] = templist1[s + 1]
+                    templist1[s + 1] = bufor
+        return templist1
+    ListToPrint=bubblesort1(ListToSort)
+    print(" ")
+    if numberofevents[0] == (-1):
+        return None
+    if numberofevents[0]>0:
+        n = int(input("Wpisz, ile kolejnych wydarzeń chcesz wyświetlic: "))
+        os.system('cls')
+    if n>numberofevents[0]:
+        n=numberofevents[0]
+        print(f'znaleziono tylko {numberofevents[0]} wydarzen od tej daty:')
+        time.sleep(3)
+        os.system('cls')
+    if n<0:
+        print("Nie nalezy wpisywac ujemnej liczby wydarzen do wyswietlenia. Wracam do manu aplikacji...")
+        time.sleep(2)
+        os.system('cls')
+        return None
+    print(" ")
+    if n>0:
+        if n==1:
+            print("Wypisuję 1 wydarzenie po wybranej dacie")
+        else:
+            print(f'Wypisywanie {n} kolejnych wydarzen od {event[-1].date_event} :')
+        for x in range(n):
+            print(f' \n Nazwa wydarzenia: {ListToPrint[x].name_event} \n Data wydarzenia: {ListToPrint[x].date_event}, \n miejsce wydarzenia: {ListToPrint[x].place_event}')
+        PressAnyKey()
+        ClearScreen()
+    if n==0:
+        print('Wybrales wypisanie "0" wydarzeń. Wracam do menu aplikacji...')
+        time.sleep(2)
+        ClearScreen()
+    del event[-1]
+    numberofevents=[]
+    x=0
+    return None
+#Koniec funkcji PrintFromDate()
+
+def DoAfterAction():
+    WriteTxt()
+    ClearScreen()
