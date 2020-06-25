@@ -17,7 +17,7 @@ class Events:
 
     def CountDays(self):
         today2=(datetime.date.max)
-        difference2 = (today2-self.date_event).dys
+        difference2 = (today2-self.date_event).days
         return int(math.fabs(difference2))
 
 #lista służąca to przechowywania elementów stworzonych obiektów klasy
