@@ -15,7 +15,10 @@ def EditEvent() -> Events:
     try:
         edit_event_name = str(input("Wpisz nazwę wydarzenia do edytowania:"))
         for el in event:
-            if el.name_event == edit_event_name:
+            if el is not event:
+                print("Nie ma takiego wydarzenia! Podaj nazwę istniejącego wydarzenia!")
+                return 0
+            elif el.name_event == edit_event_name:
                 new_edit_event_name = str(input("Wpisz nową nazwę wydarzenia:"))
                 new_edit_event_place = str(input("Wpisz nowe miejsce, w którym odbędzię się wydarzenie: "))
                 event_edit_year = int(input("Wpisz nowy rok, w którym odbędzie się wydarzenie:"))
