@@ -1,4 +1,4 @@
-import Class
+from Class import Events, event
 from AddEvent import AddNewEvent
 from DeleteEditEvent import DeleteEvent, EditEvent
 import datetime
@@ -7,6 +7,8 @@ from PrintEventsFromDate import PrintNFromDate
 from TxtFunc import DoAfterAction, ReadTxt
 import time
 import os
+
+ReadTxt()
 
 while True:
     DoAfterAction()
@@ -23,22 +25,34 @@ while True:
 
     if x == 1:
         AddNewEvent()
+        PressEnter()
         continue
     elif x == 2:
         DeleteEvent()
-        continue
-    elif x == 3:
-        EditEvent()
-        continue
-    elif x == 4:
-        PrintNFromDate()
         PressEnter()
         continue
+    elif x == 3:
+        if event == []:
+            print("Brak zapisanych wydarzeń w kalendarzu!")
+            PressEnter()
+            continue
+        else:
+            EditEvent()
+            PressEnter()
+            continue
+    elif x == 4:
+        if event == []:
+            print("Brak zapisanych wydarzeń w kalendarzu!")
+            PressEnter()
+            continue
+        else:
+            PrintNFromDate()
+            continue
     elif x == 5:
         DoAfterAction()
         break
     else:
         print("Błąd!\n"
               "Wprowadź cyfrę z zakresu 1-5\n")
-        PressAnyKey()
+        PressEnter()
         continue
