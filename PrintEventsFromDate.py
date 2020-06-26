@@ -65,6 +65,9 @@ def PrintNFromDate():
     ListToPrint=bubblesort1(ListToSort)
     print(" ")
     if numberofevents[0] == (-1):
+        del event[-1]
+        numberofevents=[]
+        x=0
         return None
     if numberofevents[0]>0:
         n = int(input("Wpisz, ile kolejnych wydarzeń chcesz wyświetlic: "))
