@@ -38,6 +38,8 @@ def PrintNFromDate():
             print(f'Liczba znalezionych wydarzenia od tej daty:   {x}')
         elif x==0:
             print("Nie znaleziono żadnych wydarzeń po podanej dacie")
+            x=(-1)
+            PressEnter()
         numberofevents.append(int(x))
         return templist
     ListToSort=[]
