@@ -30,7 +30,7 @@ def ReadTxt():
     try:
         lenght=len(line_list)
         if lenght<3:
-            print("\nNie znaleziono żadnych zapisanych wydarzeń w kalendarzu\n")
+            print("\n Nie znaleziono żadnych zapisanych wydarzeń w kalendarzu \n")
             WriteTxt()
             return None
         for x in range(0, lenght):
