@@ -23,7 +23,6 @@ def ReadTxt():
     try:
         d = open("CalendarData.txt", "r")
     except Exception:
-        print("\nNie znaleziono żadnych zapisanych wydarzeń w kalendarzu\n")
         WriteTxt()
         d = open("CalendarData.txt", "r")
     line_list=d.readlines()
