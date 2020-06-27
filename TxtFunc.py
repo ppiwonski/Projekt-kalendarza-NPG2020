@@ -46,8 +46,8 @@ def ReadTxt():
             event.append(Events(name, place, datetime.date(year,month,day)))
     except ValueError:
         print("\nUwaga:\n"
-              "Plik tekstowy modyfikowany recznie lub uszkodzony!\n"
-              "Nie wczytano żadnych zapisanych danych. Plik wyczyszczono\n")
+              "Plik tekstowy modyfikowany recznie lub uszkodzony! \n"
+              "Nie wczytano żadnych zapisanych danych. Plik wyczyszczono \n")
         PressEnter()
         WriteTxt()
 
