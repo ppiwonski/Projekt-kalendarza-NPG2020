@@ -38,6 +38,8 @@ def PrintNFromDate():
             print(f'Liczba znalezionych wydarzenia od tej daty:   {x}')
         elif x==0:
             print("Nie znaleziono żadnych wydarzeń po podanej dacie")
+            x=(-1)
+            PressEnter()
         numberofevents.append(int(x))
         return templist
     ListToSort=[]
@@ -63,6 +65,9 @@ def PrintNFromDate():
     ListToPrint=bubblesort1(ListToSort)
     print(" ")
     if numberofevents[0] == (-1):
+        del event[-1]
+        numberofevents=[]
+        x=0
         return None
     if numberofevents[0]>0:
         n = int(input("Wpisz, ile kolejnych wydarzeń chcesz wyświetlic: "))
