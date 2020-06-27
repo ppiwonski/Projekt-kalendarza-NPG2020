@@ -3,7 +3,7 @@
 
 import datetime
 from Class import Events, event
-from AdditionalFunc import ClearScreen
+from AdditionalFunc import ClearScreen, PressEnter
 
 def WriteTxt():
     a = open("CalendarData.txt", "w")
@@ -31,6 +31,7 @@ def ReadTxt():
         lenght=len(line_list)
         if lenght<3:
             print("\n Nie znaleziono żadnych zapisanych wydarzeń w kalendarzu \n")
+            PressEnter()
             WriteTxt()
             return None
         for x in range(0, lenght):
@@ -47,6 +48,7 @@ def ReadTxt():
         print("\nUwaga:\n"
               "Plik tekstowy modyfikowany recznie lub uszkodzony!\n"
               "Nie wczytano żadnych zapisanych danych. Plik wyczyszczono\n")
+        PressEnter()
         WriteTxt()
 
 def DoAfterAction():
