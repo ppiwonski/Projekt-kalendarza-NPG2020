@@ -13,13 +13,15 @@ def PrintNFromDate():
         new_event_name = str("Any_Date")
         new_event_place = str("Any_Place")
         try:
-            event_year = int(input("Wpisz rok twojej daty:"))
-            event_month = int(input("Wpisz numer miesiąca twojej daty:"))
-            event_day = int(input("Wpisz dzień miesiąca twojej daty"))
+            event_year = int(input("Wpisz rok twojej daty: "))
+            event_month = int(input("Wpisz numer miesiąca twojej daty: "))
+            event_day = int(input("Wpisz dzień miesiąca twojej daty: "))
+            event.append(Events(new_event_name, new_event_place, datetime.date(event_year, event_month, event_day)))
+            del event[-1]
         except ValueError:
             print("Wprowadzono niepoprawny numer miesiaca/roku/dnia. Wracam do menu aplikacji")
-            time.sleep(1)
-            numberofevents.append(-1)
+            time.sleep(2)
+            numberofevents.append(-2)
             ClearScreen()
             return None
         print(" ")
@@ -35,7 +37,7 @@ def PrintNFromDate():
                 templist.append(el)
                 x+=1
         if x>0:
-            print(f'Liczba znalezionych wydarzenia od tej daty:   {x}')
+            print(f'Liczba znalezionych wydarzenia od tej daty: {x}')
         elif x==0:
             print("Nie znaleziono żadnych wydarzeń po podanej dacie")
             x=(-1)
@@ -69,14 +71,17 @@ def PrintNFromDate():
         numberofevents=[]
         x=0
         return None
+    if numberofevents[0] == (-2):
+        numberofevents=[]
+        x=0
+        return None
     if numberofevents[0]>0:
         n = int(input("Wpisz, ile kolejnych wydarzeń chcesz wyświetlic: "))
         os.system('cls')
     if n>numberofevents[0]:
         n=numberofevents[0]
-        print(f'znaleziono tylko {numberofevents[0]} wydarzen od tej daty:')
-        time.sleep(3)
-        os.system('cls')
+        print(f'Znaleziono tylko {numberofevents[0]} wydarzen od tej daty.')
+        time.sleep(1)
     if n<0:
         print("Nie nalezy wpisywac ujemnej liczby wydarzen do wyswietlenia. Wracam do manu aplikacji...")
         time.sleep(2)
@@ -95,6 +100,7 @@ def PrintNFromDate():
         ClearScreen()
     if n==0:
         print('Wybrales wypisanie "0" wydarzeń. Wracam do menu aplikacji...')
+        print("Proszę czekać...")
         time.sleep(2)
         ClearScreen()
     del event[-1]
