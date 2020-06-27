@@ -20,44 +20,49 @@ while True:
           "4 - wypisz określoną ilość wydarzeń od daty"
           " (wypisuje czas od / do wydarzenia),\n"
           "5 - zamknij kalendarz.\n")
-    x = int(input("Wybierz instrukcję, którą chcesz wykonać:"))
-    ClearScreen()
+    try:
+        x = int(input("Wybierz instrukcję, którą chcesz wykonać:"))
+        ClearScreen()
 
-    if x == 1:
-        AddNewEvent()
-        PressEnter()
-        continue
-    elif x == 2:
-        if event == []:
-            print("Brak zapisanych wydarzeń w kalendarzu!")
+        if x == 1:
+            AddNewEvent()
             PressEnter()
             continue
+        elif x == 2:
+            if event == []:
+                print("Brak zapisanych wydarzeń w kalendarzu!")
+                PressEnter()
+                continue
+            else:
+                DeleteEvent()
+                PressEnter()
+            continue
+        elif x == 3:
+            if event == []:
+                print("Brak zapisanych wydarzeń w kalendarzu!")
+                PressEnter()
+                continue
+            else:
+                EditEvent()
+                PressEnter()
+                continue
+        elif x == 4:
+            if event == []:
+                print("Brak zapisanych wydarzeń w kalendarzu!")
+                PressEnter()
+                continue
+            else:
+                PrintNFromDate()
+                continue
+        elif x == 5:
+            DoAfterAction()
+            break
         else:
-            DeleteEvent()
-            PressEnter()
-        continue
-    elif x == 3:
-        if event == []:
-            print("Brak zapisanych wydarzeń w kalendarzu!")
+            print("Błąd!\n"
+                  "Wprowadź cyfrę z zakresu 1-5\n")
             PressEnter()
             continue
-        else:
-            EditEvent()
-            PressEnter()
-            continue
-    elif x == 4:
-        if event == []:
-            print("Brak zapisanych wydarzeń w kalendarzu!")
-            PressEnter()
-            continue
-        else:
-            PrintNFromDate()
-            continue
-    elif x == 5:
-        DoAfterAction()
-        break
-    else:
+    except ValueError:
         print("Błąd!\n"
               "Wprowadź cyfrę z zakresu 1-5\n")
         PressEnter()
-        continue
