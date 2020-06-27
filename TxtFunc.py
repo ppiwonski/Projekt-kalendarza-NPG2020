@@ -20,15 +20,17 @@ def WriteTxt():
     a.close()
 
 def ReadTxt():
-    d = open("CalendarData.txt", "r")
-    if d.closed:
-        print("\nNie znaleziono żadnych zapisanych wydarzeń w kalendarzu\n")
+    try:
+        d = open("CalendarData.txt", "r")
+    except Exception:
+        WriteTxt()
+        d = open("CalendarData.txt", "r")
     line_list=d.readlines()
     d.close()
     try:
         lenght=len(line_list)
         if lenght<3:
-            print("\nNie znaleziono żadnych zapisanych wydarzeń w kalendarzu\n")
+            print("\n Nie znaleziono żadnych zapisanych wydarzeń w kalendarzu \n")
             WriteTxt()
             return None
         for x in range(0, lenght):
