@@ -28,8 +28,13 @@ while True:
         PressEnter()
         continue
     elif x == 2:
-        DeleteEvent()
-        PressEnter()
+        if event == []:
+            print("Brak zapisanych wydarzeń w kalendarzu!")
+            PressEnter()
+            continue
+        else:
+            DeleteEvent()
+            PressEnter()
         continue
     elif x == 3:
         if event == []:
