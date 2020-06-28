@@ -4,7 +4,7 @@
 import os
 
 def PressEnter():
-    x=input('\nAby kontynuować, naciśnij "Enter"... ')
+    x=input('\nAby zapisac zmiany i kontynuować, naciśnij "Enter"... ')
 
 def ClearScreen():
     os.system('cls')
