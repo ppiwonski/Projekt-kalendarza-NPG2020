@@ -76,7 +76,16 @@ def PrintNFromDate():
         x=0
         return None
     if numberofevents[0]>0:
-        n = int(input("Wpisz, ile kolejnych wydarzeń chcesz wyświetlic: "))
+        try:
+            n = int(input("Wpisz, ile kolejnych wydarzeń chcesz wyświetlic: "))
+        except ValueError:
+            print("Wprowadzono bledna liczbe wydarzen.Wracam do manu aplikacji...")
+            time.sleep(2)
+            del event[-1]
+            numberofevents=[]
+            x=0
+            ClearScreen()
+            return None
         os.system('cls')
     if n>numberofevents[0]:
         n=numberofevents[0]
@@ -96,7 +105,7 @@ def PrintNFromDate():
         for x in range(n):
             print(f' \n Nazwa wydarzenia: {ListToPrint[x].name_event} \n Data wydarzenia: {ListToPrint[x].date_event},'
                   f' \n miejsce wydarzenia: {ListToPrint[x].place_event} \n Licząc od dzisiaj, {ListToPrint[x].CountdownDays()}')
-        PressEnter()
+        z=input('\nAby kontynuować, naciśnij "Enter"... ')
         ClearScreen()
     if n==0:
         print('Wybrales wypisanie "0" wydarzeń. Wracam do menu aplikacji...')
