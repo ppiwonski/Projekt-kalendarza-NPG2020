@@ -4,7 +4,7 @@ from DeleteEditEvent import DeleteEvent, EditEvent
 import datetime
 from AdditionalFunc import PressEnter, ClearScreen
 from PrintEventsFromDate import PrintNFromDate
-from TxtFunc import DoAfterAction, ReadTxt
+from TxtFunc import DoAfterAction, ReadTxt, WriteTxt
 import time
 import os
 
@@ -26,6 +26,7 @@ while True:
 
         if x == 1:
             AddNewEvent()
+            WriteTxt()
             PressEnter()
             continue
         elif x == 2:
@@ -35,6 +36,7 @@ while True:
                 continue
             else:
                 DeleteEvent()
+                WriteTxt()
                 PressEnter()
             continue
         elif x == 3:
@@ -44,6 +46,7 @@ while True:
                 continue
             else:
                 EditEvent()
+                WriteTxt()
                 PressEnter()
                 continue
         elif x == 4:
