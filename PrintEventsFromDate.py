@@ -73,7 +73,6 @@ def PrintNFromDate():
         return None
     if numberofevents[0] == (-2):
         numberofevents=[]
-        del event[-1]
         x=0
         return None
     if numberofevents[0]>0:
