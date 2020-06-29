@@ -31,25 +31,34 @@ def ReadTxt():
         lenght=len(line_list)
         if lenght<3:
             print("\n Nie znaleziono żadnych zapisanych wydarzeń w kalendarzu \n")
-            PressEnter()
+            z = input('\nAby kontynuować, naciśnij "Enter"... ')
             WriteTxt()
             return None
         for x in range(0, lenght):
             line_list[x]=line_list[x][:-1]
         for i in range(0, lenght, 3):
             name = str(line_list[i])
-            date = str(line_list[i+1])
-            place = str(line_list[i+2])
-            year = int(date[:4])
-            month = int(date[5:7])
-            day = int(date[8:10])
-            event.append(Events(name, place, datetime.date(year,month,day)))
+            try:
+                date = str(line_list[i+1])
+                place = str(line_list[i+2])
+                year = int(date[:4])
+                month = int(date[5:7])
+                day = int(date[8:10])
+                event.append(Events(name, place, datetime.date(year,month,day)))
+            except Exception:
+                print("\nUwaga:\n"
+                      "Plik tekstowy modyfikowany recznie lub uszkodzony! \n"
+                      "Nie wczytano żadnych zapisanych danych. Plik wyczyszczono \n")
+                WriteTxt()
+                z = input('\nAby kontynuować, naciśnij "Enter"... ')
+                ClearScreen()
     except ValueError:
         print("\nUwaga:\n"
               "Plik tekstowy modyfikowany recznie lub uszkodzony! \n"
               "Nie wczytano żadnych zapisanych danych. Plik wyczyszczono \n")
-        PressEnter()
         WriteTxt()
+        z = input('\nAby kontynuować, naciśnij "Enter"... ')
+        ClearScreen()
 
 def DoAfterAction():
     WriteTxt()
