@@ -19,7 +19,7 @@ def PrintNFromDate():
             event.append(Events(new_event_name, new_event_place, datetime.date(event_year, event_month, event_day)))
             del event[-1]
         except ValueError:
-            print("Wprowadzono niepoprawny numer miesiaca/roku/dnia. Wracam do menu aplikacji")
+            print("Wprowadzono niepoprawny numer miesiaca/roku/dnia. Wracam do menu aplikacji ")
             time.sleep(2)
             numberofevents.append(-2)
             ClearScreen()
