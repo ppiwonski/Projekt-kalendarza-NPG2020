@@ -101,7 +101,6 @@ def PrintNFromDate():
     if n<0:
         print("Nie nalezy wpisywac ujemnej liczby wydarzen do wyswietlenia. Wracam do manu aplikacji...")
         print("Proszę czekać...")
-        del event[-1]
         time.sleep(2)
         os.system('cls')
         return None
