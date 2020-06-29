@@ -73,6 +73,7 @@ def PrintNFromDate():
         return None
     if numberofevents[0] == (-2):
         numberofevents=[]
+        del event[-1]
         x=0
         return None
     if numberofevents[0]>0:
@@ -89,10 +90,18 @@ def PrintNFromDate():
         os.system('cls')
     if n>numberofevents[0]:
         n=numberofevents[0]
-        print(f'Znaleziono tylko {numberofevents[0]} wydarzen od tej daty.')
-        time.sleep(1)
+        if n>4:
+            print(f'Znaleziono tylko {numberofevents[0]} wydarzen od tej daty.')
+            time.sleep(2)
+        if 1 < n < 5:
+            print(f'Znaleziono tylko {numberofevents[0]} wydarzenia od tej daty.')
+            time.sleep(2)
+        if n==1:
+            print(f'Znaleziono tylko {numberofevents[0]} wydarzenie od tej daty.')
+            time.sleep(2)
     if n<0:
         print("Nie nalezy wpisywac ujemnej liczby wydarzen do wyswietlenia. Wracam do manu aplikacji...")
+        print("Proszę czekać...")
         time.sleep(2)
         os.system('cls')
         return None
