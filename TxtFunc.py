@@ -48,14 +48,14 @@ def ReadTxt():
             except Exception:
                 print("\nUwaga:\n"
                       "Plik tekstowy modyfikowany recznie lub uszkodzony! \n"
-                      "Nie wczytano żadnych zapisanych danych. Plik wyczyszczono \n")
+                      "Plik zmodyfikowano. Usunieto nieczytelne dane \n")
                 WriteTxt()
                 z = input('\nAby kontynuować, naciśnij "Enter"... ')
                 ClearScreen()
     except ValueError:
         print("\nUwaga:\n"
               "Plik tekstowy modyfikowany recznie lub uszkodzony! \n"
-              "Nie wczytano żadnych zapisanych danych. Plik wyczyszczono \n")
+              "Plik zmodyfikowano. Usunieto nieczytelne dane \n")
         WriteTxt()
         z = input('\nAby kontynuować, naciśnij "Enter"... ')
         ClearScreen()
